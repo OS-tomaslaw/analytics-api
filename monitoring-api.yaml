@@ -1,0 +1,409 @@
+openapi: '3.0.2'
+info:
+  title: Monitoring API - proposal
+  description: All the data here is filtered by the auth token. Serial Number and Activation Code are implicit on it.
+  version: '1.0'
+servers:
+  - url: https://outsystems-server/monitoring-api
+
+  
+paths:
+
+  /general-logs:
+    get:
+      summary: Retrieve the list of general logs
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/from'
+        - $ref: '#/components/parameters/to'
+        - $ref: '#/components/parameters/applicationKey'
+        - $ref: '#/components/parameters/espacesList'
+        - $ref: '#/components/parameters/message'
+        - $ref: '#/components/parameters/source'
+        - $ref: '#/components/parameters/auditOnly'
+        - $ref: '#/components/parameters/tenantId'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+    
+  /general-logs/{id}:
+    get:
+      summary: Retrieve the general log specified by the id including the full details (if exits)
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+
+  /error-logs:
+    get:
+      summary: Retrieve the list of error logs
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/from'
+        - $ref: '#/components/parameters/to'
+        - $ref: '#/components/parameters/applicationKey'
+        - $ref: '#/components/parameters/espacesList'
+        - $ref: '#/components/parameters/source'
+        - $ref: '#/components/parameters/server'
+        - $ref: '#/components/parameters/message'
+        - $ref: '#/components/parameters/tenantId'
+        - $ref: '#/components/parameters/stackTrace'
+        - $ref: '#/components/parameters/errorOnly'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+
+  /error-logs/{id}:
+    get:
+      summary: Retrieve the error log specified by the id including the full details (if exits)
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+
+  /integration-logs:
+    get:
+      summary: Retrieve the list of integration logs
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/from'
+        - $ref: '#/components/parameters/to'
+        - $ref: '#/components/parameters/applicationKey'
+        - $ref: '#/components/parameters/server'
+        - $ref: '#/components/parameters/action'
+        - $ref: '#/components/parameters/type'
+        - $ref: '#/components/parameters/errorOnly'
+        - $ref: '#/components/parameters/espacesList'
+        - $ref: '#/components/parameters/logId'
+        - $ref: '#/components/parameters/tenantId'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+
+  /integration-logs/{id}:
+    get:
+      summary: Retrieve the integration log specified by the id including the full details (if exits)
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+          
+  /timer-logs:
+    get:
+      summary: Retrieve the list of timer logs
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/from'
+        - $ref: '#/components/parameters/to'
+        - $ref: '#/components/parameters/applicationKey'
+        - $ref: '#/components/parameters/espacesList'
+        - $ref: '#/components/parameters/server'
+        - $ref: '#/components/parameters/errorOnly'
+        - $ref: '#/components/parameters/timerName'
+        - $ref: '#/components/parameters/tenantId'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+
+  /timer-logs/{id}:
+    get:
+      summary: Retrieve the timer log specified by the id including the full details (if exits)
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+
+  /extension-logs:
+    get:
+      summary: Retrieve the list of extension logs
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/from'
+        - $ref: '#/components/parameters/to'
+        - $ref: '#/components/parameters/applicationKey'
+        - $ref: '#/components/parameters/espacesList'
+        - $ref: '#/components/parameters/extensionId'
+        - $ref: '#/components/parameters/action'
+        - $ref: '#/components/parameters/server'
+        - $ref: '#/components/parameters/errorOnly'
+        - $ref: '#/components/parameters/tenantId'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+
+  /extension-logs/{id}:
+    get:
+      summary: Retrieve the extension log specified by the id including the full details (if exits)
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+          
+  /mobile-logs:
+    get:
+      summary: Retrieve the list of screen requests logs
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/from'
+        - $ref: '#/components/parameters/to'
+        - $ref: '#/components/parameters/applicationKey'
+        - $ref: '#/components/parameters/espacesList'
+        - $ref: '#/components/parameters/screen'
+        - $ref: '#/components/parameters/action'
+        - $ref: '#/components/parameters/server'
+        - $ref: '#/components/parameters/errorOnly'
+        - $ref: '#/components/parameters/tenantId'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+        
+  /mobile-logs/{id}:
+    get:
+      summary: Retrieve the screen request log specified by the id including the full details (if exits)
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+
+  /screen-logs:
+    get:
+      summary: Retrieve the list of traditional web requests logs
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/from'
+        - $ref: '#/components/parameters/to'
+        - $ref: '#/components/parameters/applicationKey'
+        - $ref: '#/components/parameters/espacesList'
+        - $ref: '#/components/parameters/screen'
+        - $ref: '#/components/parameters/server'
+        - $ref: '#/components/parameters/accessMode'
+        - $ref: '#/components/parameters/errorOnly'
+        - $ref: '#/components/parameters/tenantId'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+
+  /screen-logs/{id}:
+    get:
+      summary: Retrieve the traditional web request log specified by the id including the full details (if exits)
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+
+  /service-logs:
+    get:
+      summary: Retrieve the list of service api logs
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/from'
+        - $ref: '#/components/parameters/to'
+        - $ref: '#/components/parameters/applicationKey'
+        - $ref: '#/components/parameters/espacesList'
+        - $ref: '#/components/parameters/action'
+        - $ref: '#/components/parameters/server'
+        - $ref: '#/components/parameters/errorOnly'
+        - $ref: '#/components/parameters/tenantId'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+
+  /service-logs/{id}:
+    get:
+      summary: Retrieve the service api log specified by the id including the full details (if exits)
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          $ref: '#/components/schemas/OpenTelemetryResponse'
+
+components:
+  parameters:
+    offset:
+      in: query
+      name: offset
+      schema:
+        type: integer
+        minimum: 0
+    limit:
+      in: query
+      name: limit
+      schema:
+        type: integer
+        minimum: 1
+        default: 20
+    from:
+      in: query
+      name: from
+      description: Filter the results in a `@timestamp >= from` fashion. Defaults to 2 weeks before today.
+      schema:
+        type: string
+        format: date-time
+        example: "2021-01-01T00:00:00Z"
+    to:
+      in: query
+      name: to
+      description: Filter the results in a `@timestamp <= to` fashion. Defaults to today.
+      schema:
+        type: string
+        format: date-time
+        example: "2021-01-31T23:59:59Z"
+    applicationKey:
+      in: query
+      name: appKey
+      description: Filter the results by `resource.attributes.outsystems.app.key` as exact match (= operator).
+      schema:
+        type: string
+    espacesList:
+      in: query
+      name: espacesList
+      description: Filter the results by `resource.attributes.outsystems.module.id`.
+      explode: false
+      schema:
+        type: array
+    message:
+      in: query
+      name: message
+      description: Filter the results by `log.body` as partial match (`like` operator).
+      schema:
+        type: string
+    source:
+      in: query
+      name: source
+      description: Filter the results by `log.attributes.outsystems.log.message.tag` as partial match (`like` operator).
+      schema:
+        type: string
+    tenantId:
+      in: query
+      name: tenantId
+      description: Filter results by `log.attributes.outsystems.tenant.id` as exact match (= operator).
+      schema:
+        type: string
+    server:
+      in: query
+      name: server
+      description: Filter results by `resource.attributes.host.name` as partial match (`like` operator).
+      schema:
+        type: string
+    accessMode:
+      in: query
+      name: accessMode
+      description: Filter by `log.attributes.outsystems.log.screen.access_mode` as exact match
+      schema:
+        type: string
+    screen:
+      in: query
+      name: screen
+      description: Filter by `log.attributes.outsystems.log.screen.name` as partial match (`like` operator)
+      schema:
+        type: string
+    extensionId:
+      in: query
+      name: extensionId
+      description: Filter by `log.attributes.outsystems.code.owner.function.id` as exact match.
+      schema:
+        type: string
+    auditOnly:
+      in: query
+      name: auditOnly
+      description: Filter by `log.attributes.outsystems.log.message.type` as audit log. If nothing specified or false, all the logs (not only audit) should be retrieved.
+      schema:
+        type: boolean
+        default: false
+    errorOnly:
+      in: query
+      name: errorOnly
+      description: Filter by `log.attributes.outsystems.log.error.uid` as error log. If nothing specified or false, all the logs (not only error) should be retrieved.
+      schema:
+        type: boolean
+    stackTrace:
+      in: query
+      name: stackTrace
+      description: Filter results by `log.attributes.exception.stacktrace` as partial match (`like` operator).
+      schema:
+        type: string
+    logId:
+      in: query
+      name: logId
+      description: Filter by `log.attributes.outsystems.log.uid` as exact match.
+      schema:
+        type: string
+    type:
+      in: query
+      name: type
+      description: Filter by `log.attributes.http.method` as exact match.
+      schema:
+        type: string
+    action:
+      in: query
+      name: action
+      description: Filter by `log.attributes.code.function` as exact match.
+      schema:
+        type: string
+    timerName:
+      in: query
+      name: timerName
+      description: Filter by `log.attributes.code.function` as exact match.
+      schema:
+        type: string
+    logIds:
+      in: query
+      name: logIds
+      description: Filter by `log.attributes.outsystems.log.uid` as contains/in operator.
+      schema:
+        type: array
+      explode: false
+    dataType:
+      in: query
+      name: dataType
+      description: Filter by `log.attributes.outsystems.log.type` as exact match.
+      schema:
+        type: string
+    fields:
+      in: query
+      name: fields
+      description: Specifieds the list of fields to be included in the response.
+      schema:
+        type: array
+    id:
+      in: path
+      name: id
+      required: true
+      description: Filter by `log.attributes.outsystems.log.uid` as exact match.
+      schema:
+        type: string
+  schemas:
+    OpenTelemetryResponse:
+      type: object
+      description: See https://outsystemsrd.atlassian.net/wiki/spaces/UOPT/pages/2306211841/Logs+API#Sample-Response

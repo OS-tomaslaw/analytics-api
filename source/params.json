@@ -1,0 +1,102 @@
+{
+    "serial": {
+        "key": "resource.attributes.outsystems.app.serial",
+        "operator": "eq"
+    },
+    "offset": {
+        "key": "offset",
+        "operator": ""
+    },
+    "limit": {
+        "key": "limit",
+        "operator": ""
+    },
+    "from": {
+        "key": "@timestamp",
+        "operator": "gte"
+    },
+    "to": {
+        "key": "@timestamp",
+        "operator": "lte"
+    },
+    "appKey": {
+        "key": "resource.attributes.outsystems.app.key",
+        "operator": "eq"
+    },
+    "espacesList": {
+        "key": "resource.attributes.outsystems.module.id",
+        "operator": "in"
+    },
+    "message": {
+        "key": "log.body",
+        "operator": "wildcard"
+    },
+    "source": {
+        "key": "log.attributes.outsystems.log.message.tag",
+        "operator": "wildcard"
+    },
+    "tenantId": {
+        "key": "log.attributes.outsystems.tenant.id",
+        "operator": "eq"
+    },
+    "server": {
+        "key": "resource.attributes.host.name",
+        "operator": "wildcard"
+    },
+    "accessMode": {
+        "key": "log.attributes.outsystems.log.screen.access_mode",
+        "operator": "eq"
+    },
+    "screen": {
+        "key": "log.attributes.outsystems.log.screen.name",
+        "operator": "wildcard"
+    },
+    "extensionId": {
+        "key": "log.attributes.outsystems.code.owner.function.id",
+        "operator": "eq"
+    },
+    "auditOnly": {
+        "key": "log.attributes.outsystems.log.message.type",
+        "operator": "eq"
+    },
+    "errorOnly": {
+        "key": "log.attributes.outsystems.log.error.uid",
+        "operator": "eq"
+    },
+    "stackTrace": {
+        "key": "log.attributes.exception.stacktrace",
+        "operator": "wildcard"
+    },
+    "logId": {
+        "key": "log.attributes.outsystems.log.uid",
+        "operator": "eq"
+    },
+    "type": {
+        "key": "log.attributes.http.method",
+        "operator": "eq"
+    },
+    "action": {
+        "key": "log.attributes.code.function",
+        "operator": "eq"
+    },
+    "timerName": {
+        "key": "log.attributes.code.function",
+        "operator": "eq"
+    },
+    "logIds": {
+        "key": "log.attributes.outsystems.log.uid",
+        "operator": "in"
+    },
+    "dataType": {
+        "key": "log.attributes.outsystems.log.type",
+        "operator": "eq"
+    },
+    "keys": {
+        "key": "Specifieds the list of keys to be included in the response.",
+        "operator": "eq"
+    },
+    "id": {
+        "key": "log.attributes.outsystems.log.uid",
+        "operator": "eq"
+    }
+}
